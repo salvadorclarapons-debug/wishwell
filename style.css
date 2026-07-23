@@ -1,0 +1,79 @@
+/* Estils bàsics (el fons del pou s'ha de posar a Webflow) */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Evitar scroll si la imatge del pou és gran */
+}
+
+#wishwell-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Franja negra a sota per als botons (opcional si es vol neta) */
+#payment-buttons {
+    margin-top: auto; /* Empènyer cap a sota */
+    background-color: black;
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Classes d'ocultació per a les interaccions */
+.hidden {
+    opacity: 0;
+    pointer-events: none; /* Evitar clics en elements amagats */
+    transition: opacity 0.5s ease; /* Transició suau d'aparició */
+}
+
+/* Quan l'element és visible */
+.ritual-text.visible,
+.ritual-element.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Estils per a la línia de 15 segons */
+#barra-timer-container {
+    width: 80%;
+    height: 1px;
+    background-color: #333; /* Color de fons de la línia fosc */
+    margin: 20px 0;
+}
+
+#barra-timer {
+    width: 0%; /* Al principi buida */
+    height: 1px;
+    background-color: #ffd700; /* Color de progressió daurat */
+    transition: width 15s linear; /* La progressió triga 15 segons */
+}
+
+/* El Tutorial modal */
+#tutorial-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tutorial-content {
+    background-color: #111;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+}
