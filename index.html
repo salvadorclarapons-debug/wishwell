@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ritual Wishwell</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Contenidor del Pou (el fons el posarem a Webflow) -->
+    <div id="wishwell-container">
+        
+        <!-- Textos inicials (inicialment amagats per CSS) -->
+        <h1 id="wishwell-title" class="ritual-text hidden">WISHWELL</h1>
+        <h2 id="think-title" class="ritual-text hidden">PENSA UN DESIG</h2>
+        
+        <!-- Línia de 15 segons -->
+        <div id="barra-timer-container">
+            <div id="barra-timer" class="ritual-element hidden"></div>
+        </div>
+        
+        <!-- Botó d'afegir 15s (inicialment amagat) -->
+        <button id="btn-refresh" class="ritual-element hidden">+refresh 15 segons més</button>
+
+        <!-- La Moneda (inicialment amagada per CSS, recorda posar una URL real) -->
+        <img id="moneda" class="ritual-element hidden" src="URL_DE_LA_TEVA_MONEDA.png" alt="Moneda">
+
+        <!-- Botons inferiors (inicialment amagats per CSS) -->
+        <div id="payment-buttons" class="ritual-element hidden">
+            <button id="btn-validar">CRIPTOVALIDAR EL DESIG 0'50 USDC (WALLET TO WALLET)</button>
+            <button id="btn-tutorial">La primera vegada wallet to wallet? Clica...</button>
+        </div>
+
+        <!-- El Tutorial (inicialment amagat per CSS, recorda posar les teves 7 URLs reals) -->
+        <div id="tutorial-container" class="ritual-element hidden">
+            <div class="tutorial-content">
+                <button id="btn-close-tutorial">Tancar</button>
+                <div class="tutorial-slides">
+                    <!-- Pantalla 1 -->
+                    <div class="tutorial-slide active">
+                        <img src="URL_PANTALLA_1.png" alt="Pantalla 1">
+                    </div>
+                    <!-- Pantalles 2-7, afegeix-les així -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Missatge final (inicialment amagat per CSS) -->
+        <p id="final-message" class="ritual-text hidden">DESIG CRIPTOVALIDAT. MOLTA SORT</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
