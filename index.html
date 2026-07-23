@@ -4,67 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ritual Wishwell</title>
-    <!-- Recorda canviar a la teva URL de Vercel real -->
-    <link rel="stylesheet" href="https://wishwell-mu.vercel.app/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Contenidor del Pou (el fons el posarem a Webflow) -->
+    <!-- Contenidor principal del Pou -->
     <div id="wishwell-container">
-        
-        <!-- Textos inicials (inicialment amagats per CSS, mides ajustades per CSS) -->
-<!-- Text discret a sobre -->
-<h2 id="wishwell-title" class="hidden">WISHWELL</h2>
 
-<!-- Títol principal -->
-<h1 id="think-title" class="hidden">PENSA UN DESIG</h1>
-        
-        <!-- Línia de 15 segons -->
-        <div id="barra-timer-container">
-            <div id="barra-timer" class="ritual-element hidden"></div>
+        <!-- Textos inicials -->
+        <h2 id="wishwell-title" class="hidden">WISHWELL</h2>
+        <h1 id="think-title" class="hidden">PENSA UN DESIG</h1>
+
+        <!-- Línia de temps de 15 segons -->
+        <div id="barra-timer-container" class="hidden">
+            <div id="barra-timer" class="hidden"></div>
         </div>
-        
-        <!-- Botó d'afegir 15s (inicialment amagat) -->
-        <button id="btn-refresh" class="ritual-element hidden">+refresh 15 segons més</button>
 
-        <!-- La Moneda (inicialment amagada per CSS, recorda posar una URL real) -->
-        <img id="moneda" class="ritual-element hidden" src="usdc-trasparent.png" alt="0.50 USDC Coin">
+        <!-- Botó d'afegir 15s / Refresh -->
+        <button id="btn-refresh" class="hidden"></button>
 
-        <!-- Botons inferiors (inicialment amagats per CSS, franja negra a sota fixed) -->
-        <div id="payment-buttons" class="ritual-element hidden">
-            
-            <!-- AJUST 3: Botó de dues línies CRIPTOVALIDAR / WALLET TO WALLET -->
+        <!-- La Moneda (Surt un cop acaben els 15 segons) -->
+        <img id="moneda" class="hidden" src="usdc-trasparent.png" alt="0.50 USDC Coin">
+
+        <!-- Botons inferiors (Franja de validació i tutorial) -->
+        <div id="payment-buttons" class="hidden">
+
+            <!-- Botó principal de pagament -->
             <button id="btn-validar">
                 <span class="main-text">CRIPTOVALIDAR EL DESIG 0'50 USDC</span>
                 <span class="small-text">WALLET TO WALLET</span>
             </button>
-            
-            <!-- AJUST 4: Botó de dues línies Primera vegada / Fem-ho en 2 minuts -->
+
+            <!-- Botó tutorial -->
             <button id="btn-tutorial">
                 <span class="main-text">Primera vegada wallet to wallet?</span>
                 <span class="small-text">Fem-ho en 2 minuts</span>
             </button>
-            
+
         </div>
 
-        <!-- El Tutorial modal (inicialment amagat per CSS) -->
-        <div id="tutorial-container" class="ritual-element hidden">
-            <div class="tutorial-content">
-                <button id="btn-close-tutorial">Tancar</button>
-                <div class="tutorial-slides">
-                    <!-- Pantalla 1 -->
-                    <div class="tutorial-slide active">
-                        <img src="URL_PANTALLA_1.png" alt="Pantalla 1">
-                    </div>
-                    <!-- Pantalles 2-7, afegeix-les així -->
-                </div>
-            </div>
-        </div>
-
-        <!-- Missatge final (inicialment amagat per CSS) -->
-        <p id="final-message" class="ritual-text hidden">DESIG CRIPTOVALIDAT. MOLTA SORT</p>
     </div>
 
-    <!-- Recorda canviar a la teva URL de Vercel real -->
-    <script src="https://wishwell-mu.vercel.app/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
