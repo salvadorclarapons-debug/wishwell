@@ -1,4 +1,53 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // -----------------------------------------------------------
+  // 1. DICCIONARI DE TRADUCCIONS INTERNACIONAL (Cosmic Era)
+  // -----------------------------------------------------------
+  const diccionari = {
+    ca: { wishwell: "Wishwell", think: "Pensa el teu desig profundament...", btnCripto: "CRIPTOVALIDAR", btnPrimera: "Primera vegada" },
+    es: { wishwell: "Wishwell", think: "Piensa tu deseo profundamente...", btnCripto: "CRIPTOVALIDAR", btnPrimera: "Primera vez" },
+    en: { wishwell: "Wishwell", think: "Think your wish deeply...", btnCripto: "CRYPTOVALIDATE", btnPrimera: "First time" },
+    fr: { wishwell: "Wishwell", think: "Pensez profondément à votre vœu...", btnCripto: "CRYPTOVALIDER", btnPrimera: "Première fois" },
+    de: { wishwell: "Wishwell", think: "Denke tief über deinen Wunsch nach...", btnCripto: "KRYPTOVALIDIEREN", btnPrimera: "Erstes Mal" },
+    it: { wishwell: "Wishwell", think: "Pensa intensamente al tuo desiderio...", btnCripto: "CRIPTOVALIDA", btnPrimera: "Prima volta" },
+    pt: { wishwell: "Wishwell", think: "Pense no seu desejo profundamente...", btnCripto: "CRIPTOVALIDAR", btnPrimera: "Primeira vez" },
+    nl: { wishwell: "Wishwell", think: "Denk diep na over je wens...", btnCripto: "CRYPTOVALIDEREN", btnPrimera: "Eerste keer" },
+    
+    // Nòrdics
+    da: { wishwell: "Wishwell", think: "Tænk dybt over dit ønske...", btnCripto: "KRYPTOVALIDER", btnPrimera: "Første gang" },
+    sv: { wishwell: "Wishwell", think: "Tänk djupt på din önskan...", btnCripto: "KRYPTOVALIDERA", btnPrimera: "Första gången" },
+    no: { wishwell: "Wishwell", think: "Tenk dypt på ønsket ditt...", btnCripto: "KRYPTOVALIDER", btnPrimera: "Første gang" },
+    
+    // Bàltics
+    lt: { wishwell: "Wishwell", think: "Giliai apmąstykite savo norą...", btnCripto: "KRIPTO PATVIRTINIMAS", btnPrimera: "Pirmą kartą" },
+    lv: { wishwell: "Wishwell", think: "Dziļi pārdomājiet savu vēlēšanos...", btnCripto: "KRIPTO APSTIPRINĀT", btnPrimera: "Pirmā reize" },
+    et: { wishwell: "Wishwell", think: "Mõelge sügavalt oma soovile...", btnCripto: "KRÜPTOVALIDEERI", btnPrimera: "Esimest korda" },
+    
+    // Europa Central i Oriental
+    cs: { wishwell: "Wishwell", think: "Hluboce přemýšlejte o svém přání...", btnCripto: "KRYPTOVALIDOVAT", btnPrimera: "Poprvé" },
+    hr: { wishwell: "Wishwell", think: "Duboko razmislite o svojoj želji...", btnCripto: "KRIPTOVALIDIRAJ", btnPrimera: "Prvi put" },
+    sr: { wishwell: "Wishwell", think: "Дубоко размислите о својој жељи...", btnCripto: "КРИПТОВАЛИДИРАЈ", btnPrimera: "Први пут" },
+    ro: { wishwell: "Wishwell", think: "Gândește-te profund la dorința ta...", btnCripto: "CRIPTOVALIDARE", btnPrimera: "Prima dată" },
+    bg: { wishwell: "Wishwell", think: "Помислете дълбоко за вашето желание...", btnCripto: "КРИПТОВАЛИДИРАЙ", btnPrimera: "За първи път" },
+    uk: { wishwell: "Wishwell", think: "Глибоко подумайте про своє бажання...", btnCripto: "КРИПТОВАЛІДАЦІЯ", btnPrimera: "Уперше" },
+    pl: { wishwell: "Wishwell", think: "Pomyśl głęboko o swoim życzeniu...", btnCripto: "KRYPTOWALIDACJA", btnPrimera: "Pierwszy raz" },
+    el: { wishwell: "Wishwell", think: "Σκεφτείτε τη ευχή σας βαθιά...", btnCripto: "ΚΡΥΠΤΟΕΠΑΛΗΘΕΥΣΗ", btnPrimera: "Πρώτη φορά" },
+    ru: { wishwell: "Wishwell", think: "Загадайте свое желание глубоко...", btnCripto: "КРИПТОВАЛИДАЦИЯ", btnPrimera: "Первый раз" },
+    
+    // Regionals i Àsia-Pacífic
+    oc: { wishwell: "Wishwell", think: "Pensatz prigondament al vostre desig...", btnCripto: "CRIPTOVALIDAR", btnPrimera: "Primièra vegada" },
+    zh: { wishwell: "Wishwell", think: "深刻思考你的願望...", btnCripto: "加密驗證", btnPrimera: "第一次" },
+    ja: { wishwell: "Wishwell", think: "願いを深く心に描いてください...", btnCripto: "暗号検証", btnPrimera: "初めて" },
+    ko: { wishwell: "Wishwell", think: "당신의 소원을 깊이 생각해보세요...", btnCripto: "크립토 검증", btnPrimera: "첫 번째" },
+    tr: { wishwell: "Wishwell", think: "Dileğini derinlemesine düşün...", btnCripto: "KRİPTO DOĞRULA", btnPrimera: "İlk kez" }
+  };
+
+  // Detecció automàtica de la llengua del navegador (2 caràcters)
+  const userLang = (navigator.language || navigator.userLanguage || 'en').substring(0, 2);
+  const t = diccionari[userLang] || diccionari['en'];
+
+  // -----------------------------------------------------------
+  // 2. SELECCIÓ D'ELEMENTS DOM
+  // -----------------------------------------------------------
   const wishwellTitle = document.getElementById('wishwell-title');
   const thinkTitle = document.getElementById('think-title');
   const timerWrapper = document.getElementById('timer-wrapper');
@@ -13,7 +62,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const refreshIconSVG = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-left: 4px;"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>`;
 
-  // 1. Inici del ritual (Capçalera + Barra)
+  // -----------------------------------------------------------
+  // 3. APLICAR TRADUCCIONS AUTOMÀTIQUES
+  // -----------------------------------------------------------
+  if (wishwellTitle) wishwellTitle.textContent = t.wishwell;
+  if (thinkTitle) thinkTitle.textContent = t.think;
+  if (btnCriptovalidar) btnCriptovalidar.textContent = t.btnCripto;
+  if (btnPrimeraVegada) btnPrimeraVegada.textContent = t.btnPrimera;
+
+  // -----------------------------------------------------------
+  // 4. INICI DEL RITUAL I TIMERS
+  // -----------------------------------------------------------
   setTimeout(() => {
     if (wishwellTitle) wishwellTitle.classList.remove('hidden');
     if (thinkTitle) thinkTitle.classList.remove('hidden');
