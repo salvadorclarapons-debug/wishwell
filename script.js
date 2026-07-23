@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     tr: { wishwell: "Wishwell", think: "Dileğini derinlemesine düşün...", btnCripto: "KRİPTO DOĞRULA", btnPrimera: "İlk kez" }
   };
 
-  // Detecció automàtica de la llengua del navegador (2 caràcters)
+  // Detecció automàtica de la llengua del navegador
   const userLang = (navigator.language || navigator.userLanguage || 'en').substring(0, 2);
   const t = diccionari[userLang] || diccionari['en'];
 
@@ -55,7 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnRefresh = document.getElementById('btn-refresh');
   const moneda = document.getElementById('moneda');
   
-  // Botons individuals de pagament
   const btnCriptovalidar = document.getElementById('btn-criptovalidar');
   const btnPrimeraVegada = document.getElementById('btn-primera-vegada');
   const paymentButtons = document.getElementById('payment-buttons');
@@ -117,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btnCriptovalidar.classList.remove('hidden');
       }
 
-      // PAS 2: Espera 2s més -> Apareix el segon botó (Primera vegada)
+      // PAS 2: Espera 3s per poder llegir bé -> Apareix el segon botó (Primera vegada)
       setTimeout(() => {
         if (btnPrimeraVegada) {
           btnPrimeraVegada.classList.remove('hidden');
@@ -131,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         }, 3000);
 
-      }, 2000);
+      }, 3000); // <-- Augmentat a 3 segons d'espera!
 
     }, 2000);
   }
@@ -139,21 +138,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // Reinici amb el botó +15s
   if (btnRefresh) {
     btnRefresh.addEventListener('click', () => {
-      // Amaguem el botó de refresh
       btnRefresh.classList.add('hidden');
       
-      // Amaguem els botons individuals i el seu contenidor
       if (btnCriptovalidar) btnCriptovalidar.classList.add('hidden');
       if (btnPrimeraVegada) btnPrimeraVegada.classList.add('hidden');
       if (paymentButtons) paymentButtons.classList.add('hidden');
       
-      // Amaguem la moneda tornant-la al lateral
       if (moneda) {
         moneda.classList.remove('coin-visible');
         moneda.classList.add('coin-hidden');
       }
 
-      // Reiniciem la barra
       iniciarBarra15Segons();
     });
   }
