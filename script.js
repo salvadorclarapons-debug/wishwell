@@ -1,4 +1,3 @@
-// Esperem que la pàgina estigui carregada
 document.addEventListener('DOMContentLoaded', () => {
   const wishwellTitle = document.getElementById('wishwell-title');
   const thinkTitle = document.getElementById('think-title');
@@ -8,23 +7,24 @@ document.addEventListener('DOMContentLoaded', () => {
   const moneda = document.getElementById('moneda');
   const paymentButtons = document.getElementById('payment-buttons');
 
-  // SVG de la icona de recàrrega
-  const refreshIconSVG = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-left: 6px;"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>`;
+  // SVG de la icona de recàrrega/refresh
+  const refreshIconSVG = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-left: 4px;"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>`;
 
-  // 1. Inici del ritual: Mostrem el text discret "WISHWELL", "PENSA UN DESIG" i la barra de temps
+  // 1. Inici del ritual: Mostrem "WISHWELL", "PENSA UN DESIG" i la barra
   setTimeout(() => {
     if (wishwellTitle) wishwellTitle.classList.remove('hidden');
     if (thinkTitle) thinkTitle.classList.remove('hidden');
     if (barraTimerContainer) barraTimerContainer.classList.remove('hidden');
     if (barraTimer) barraTimer.classList.remove('hidden');
 
-    // Assegurem que la moneda i el botó de refresh estiguin amagats al principi
+    // Ens assegurem que la moneda i botons estiguin amagats inicialment
     if (moneda) moneda.classList.add('hidden');
     if (btnRefresh) btnRefresh.classList.add('hidden');
+    if (paymentButtons) paymentButtons.classList.add('hidden');
 
-    // Iniciem l'animació de 15 segons per a la barra
+    // Activem el comptador de 15 segons
     iniciarBarra15Segons();
-  }, 1000);
+  }, 500);
 
   function iniciarBarra15Segons() {
     let tempsRestant = 15;
@@ -47,28 +47,28 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function completarTemps() {
-    // Afegeix el text "+ 15s" i la icona al botó de refresh
+    // Afegeix el text i la icona de recàrrega al botó de refresh
     if (btnRefresh) {
       btnRefresh.innerHTML = `+ 15s ${refreshIconSVG}`;
       btnRefresh.classList.remove('hidden');
     }
 
-    // APAREIX LA MONEDA quan s'acaben els 15 segons!
+    // Quan acaben els 15s: Apareix la moneda i els botons!
     if (moneda) {
       moneda.classList.remove('hidden');
     }
 
-    // Mostrem els botons inferiors de pagament
     if (paymentButtons) {
       paymentButtons.classList.remove('hidden');
     }
   }
 
-  // Si fan clic a Refresh, afegim 15 segons més i tornem a amagar la moneda
+  // Si premen el botó de +15s, tornem a reiniciar la barra i amagar la moneda
   if (btnRefresh) {
     btnRefresh.addEventListener('click', () => {
       btnRefresh.classList.add('hidden');
       if (moneda) moneda.classList.add('hidden');
+      if (paymentButtons) paymentButtons.classList.add('hidden');
       iniciarBarra15Segons();
     });
   }
