@@ -1,5 +1,6 @@
 // Esperem que la pàgina estigui carregada
 document.addEventListener('DOMContentLoaded', () => {
+  const wishwellTitle = document.getElementById('wishwell-title');
   const thinkTitle = document.getElementById('think-title');
   const barraTimerContainer = document.getElementById('barra-timer-container');
   const barraTimer = document.getElementById('barra-timer');
@@ -7,16 +8,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const moneda = document.getElementById('moneda');
   const paymentButtons = document.getElementById('payment-buttons');
 
-  // SVG de la icona de recàrrega (de la imatge)
+  // SVG de la icona de recàrrega
   const refreshIconSVG = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-left: 6px;"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>`;
 
-  // 1. Inici del ritual: Mostrem "PENSA UN DESIG" i la barra de temps
+  // 1. Inici del ritual: Mostrem el text discret "WISHWELL", "PENSA UN DESIG" i la barra de temps
   setTimeout(() => {
+    if (wishwellTitle) wishwellTitle.classList.remove('hidden');
     if (thinkTitle) thinkTitle.classList.remove('hidden');
     if (barraTimerContainer) barraTimerContainer.classList.remove('hidden');
     if (barraTimer) barraTimer.classList.remove('hidden');
 
-    // Assegurem que moneda i botó estiguin amagats al principi
+    // Assegurem que la moneda i el botó de refresh estiguin amagats al principi
     if (moneda) moneda.classList.add('hidden');
     if (btnRefresh) btnRefresh.classList.add('hidden');
 
@@ -45,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function completarTemps() {
-    // Afegeix el text "+ " i la icona al botó de refresh
+    // Afegeix el text "+ 15s" i la icona al botó de refresh
     if (btnRefresh) {
       btnRefresh.innerHTML = `+ 15s ${refreshIconSVG}`;
       btnRefresh.classList.remove('hidden');
