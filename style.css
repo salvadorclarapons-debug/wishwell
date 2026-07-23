@@ -42,11 +42,13 @@ body, html {
 
 /* AJUST 1: WHISHWELL petit (com un encapçalament secundari) */
 #wishwell-title {
-    font-size: 16px; /* Mida petita i discreta */
-    font-weight: 600; /* Semi-negreta */
-    margin-top: 10px;
-    margin-bottom: 5px;
-    letter-spacing: 1px; /* Un poc espaiat */
+   #wishwell-title {
+  color: rgba(255, 255, 255, 0.4); /* Gris/blanc suau i discret */
+  font-size: 14px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  font-weight: 400;
 }
 
 /* AJUST 2: PENSA UN DESIG gran (com l'antic Wishwell) */
