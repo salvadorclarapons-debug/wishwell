@@ -1,110 +1,73 @@
+// Esperem que la pàgina estigui carregada
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // 1. Detecció de l'idioma del navegador
-    const userLang = navigator.language || navigator.userLanguage; 
-    const lang = userLang.startsWith('es') ? 'es' : 'ca'; // Per defecte 'ca', si detecta espanyol, 'es'
+  const thinkTitle = document.getElementById('think-title');
+  const barraTimerContainer = document.getElementById('barra-timer-container');
+  const barraTimer = document.getElementById('barra-timer');
+  const btnRefresh = document.getElementById('btn-refresh');
+  const moneda = document.getElementById('moneda');
+  const paymentButtons = document.getElementById('payment-buttons');
 
-    // 2. Diccionari de traduccions
-    const translations = {
-        ca: {
-            wishwell: "WISHWELL",
-            pensa: "PENSA UN DESIG",
-            refresh: "+refresh 15 segons més",
-            validar: "CRIPTOVALIDAR EL DESIG 0'50 USDC",
-            wallet: "WALLET TO WALLET",
-            tutorial: "Primera vegada wallet to wallet?",
-            minuts: "Fem-ho en 2 minuts",
-            tancar: "Tancar",
-            sort: "DESIG CRIPTOVALIDAT. MOLTA SORT"
-        },
-        es: {
-            wishwell: "WISHWELL",
-            pensa: "PIENSA UN DESEO",
-            refresh: "+refresh 15 segundos más",
-            validar: "CRIPTOVALIDAR EL DESEO 0'50 USDC",
-            wallet: "WALLET TO WALLET",
-            tutorial: "¿Primera vez wallet to wallet?",
-            minuts: "Hagámoslo en 2 minutos",
-            tancar: "Cerrar",
-            sort: "DESEO CRIPTOVALIDADO. MUCHA SUERTE"
-        }
-    };
+  // SVG de la icona de recàrrega (de la imatge)
+  const refreshIconSVG = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-left: 6px;"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>`;
 
-    // 3. Elements de la pàgina
-    const elements = {
-        title1: document.getElementById('wishwell-title'),
-        title2: document.getElementById('think-title'),
-        timer: document.getElementById('barra-timer'),
-        moneda: document.getElementById('moneda'),
-        buttons: document.getElementById('payment-buttons'),
-        refresh: document.getElementById('btn-refresh'),
-        validarText: document.querySelector('#btn-validar .main-text'),
-        walletText: document.querySelector('#btn-validar .small-text'),
-        tutorialText: document.querySelector('#btn-tutorial .main-text'),
-        minutsText: document.querySelector('#btn-tutorial .small-text'),
-        tutorial: document.getElementById('tutorial-container'),
-        closeTutorial: document.getElementById('btn-close-tutorial'),
-        finalMessage: document.getElementById('final-message')
-    };
+  // 1. Inici del ritual: Mostrem "PENSA UN DESIG" i la barra de temps
+  setTimeout(() => {
+    if (thinkTitle) thinkTitle.classList.remove('hidden');
+    if (barraTimerContainer) barraTimerContainer.classList.remove('hidden');
+    if (barraTimer) barraTimer.classList.remove('hidden');
 
-    // 4. Aplicar traduccions segons l'idioma detectat
-    elements.title1.textContent = translations[lang].wishwell;
-    elements.title2.textContent = translations[lang].pensa;
-    elements.refresh.textContent = translations[lang].refresh;
-    elements.validarText.textContent = translations[lang].validar;
-    elements.walletText.textContent = translations[lang].wallet;
-    elements.tutorialText.textContent = translations[lang].tutorial;
-    elements.minutsText.textContent = translations[lang].minuts;
-    elements.closeTutorial.textContent = translations[lang].tancar;
-    elements.finalMessage.textContent = translations[lang].sort;
+    // Assegurem que moneda i botó estiguin amagats al principi
+    if (moneda) moneda.classList.add('hidden');
+    if (btnRefresh) btnRefresh.classList.add('hidden');
 
-    // Funcions auxiliars per mostrar elements suavitzadament
-    const show = (element) => element.classList.add('visible');
-    const hide = (element) => element.classList.remove('visible');
+    // Iniciem l'animació de 15 segons per a la barra
+    iniciarBarra15Segons();
+  }, 1000);
 
-    // --- RITUAL SEQÜENCIAL (S'executa per a qualsevol idioma) ---
+  function iniciarBarra15Segons() {
+    let tempsRestant = 15;
+    if (barraTimer) barraTimer.style.width = '0%';
 
-    // 1. Inici del Ritual
-    setTimeout(() => show(elements.title1), 500); 
-    setTimeout(() => show(elements.title2), 1000); 
+    const interval = setInterval(() => {
+      tempsRestant -= 0.1;
+      const percentatge = ((15 - tempsRestant) / 15) * 100;
 
-    // 2. Començar el Temporitzador de 15 segons
-    setTimeout(() => {
-        elements.timer.style.width = '100%'; 
-        elements.timer.style.transition = 'width 15s linear'; 
-    }, 1500);
+      if (barraTimer) {
+        barraTimer.style.width = `${Math.min(percentatge, 100)}%`;
+      }
 
-    // 3. Després dels 15 segons de temps de pensar...
-    setTimeout(() => {
-        show(elements.refresh); 
-        show(elements.moneda);  
-        show(elements.buttons); 
-    }, 16500); // 1.5s inicials + 15s temporitzador
+      // Quan s'acaben els 15 segons
+      if (tempsRestant <= 0) {
+        clearInterval(interval);
+        completarTemps();
+      }
+    }, 100);
+  }
 
-    // --- INTERACCIONS ---
+  function completarTemps() {
+    // Afegeix el text "+ " i la icona al botó de refresh
+    if (btnRefresh) {
+      btnRefresh.innerHTML = `+ 15s ${refreshIconSVG}`;
+      btnRefresh.classList.remove('hidden');
+    }
 
-    // Interacció de +refresh
-    elements.refresh.addEventListener('click', () => {
-        elements.timer.style.transition = 'none'; 
-        elements.timer.style.width = '0%'; 
-        setTimeout(() => {
-            elements.timer.style.transition = 'width 15s linear'; 
-            elements.timer.style.width = '100%';
-        }, 50); 
+    // APAREIX LA MONEDA quan s'acaben els 15 segons!
+    if (moneda) {
+      moneda.classList.remove('hidden');
+    }
+
+    // Mostrem els botons inferiors de pagament
+    if (paymentButtons) {
+      paymentButtons.classList.remove('hidden');
+    }
+  }
+
+  // Si fan clic a Refresh, afegim 15 segons més i tornem a amagar la moneda
+  if (btnRefresh) {
+    btnRefresh.addEventListener('click', () => {
+      btnRefresh.classList.add('hidden');
+      if (moneda) moneda.classList.add('hidden');
+      iniciarBarra15Segons();
     });
-
-    // Interacció per obrir tutorial modal
-    const tutorialBtn = document.getElementById('btn-tutorial');
-    tutorialBtn.addEventListener('click', () => show(elements.tutorial));
-    elements.closeTutorial.addEventListener('click', () => hide(elements.tutorial));
-
-    // Interacció simulada de compra per mostrar l'splash final
-    const validarBtn = document.getElementById('btn-validar');
-    validarBtn.addEventListener('click', () => {
-        // Simulem l'èxit per mostrar l'splash final i el text de sort
-        hide(elements.moneda);
-        hide(elements.buttons);
-        show(elements.finalMessage);
-    });
-
+  }
 });
