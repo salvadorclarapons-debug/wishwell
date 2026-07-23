@@ -5,11 +5,13 @@ body, html {
     width: 100%;
     height: 100%;
     overflow: hidden; /* Evitar scroll */
-    background: transparent; /* Permet veure el fons de Webflow */
+    background-image: url('Gemini POU.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    color: #1a1a1a; /* Color text base fosc, Webflow ho sobreescriurà si cal */
-}
-
+    color: #1a1a1a; 
+    }
 /* Contenidor que ocupa tota la pantalla i distribueix elements */
 #wishwell-container {
     display: flex;
