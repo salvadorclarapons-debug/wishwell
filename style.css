@@ -117,14 +117,18 @@ body, html {
 /* Botons de pagament en 2 línies netes */
 #payment-buttons {
   position: absolute;
-  bottom: 20px; /* O l'alçada de les pedres */
-  left: 0;
-  width: 100%;
+  /* Augmentem la distància des de baix per pujar-los a mitja pedra */
+  bottom: 80px; /* Si abans tenies 20px o 30px, puja a 70px - 90px segons l'alçada de la imatge */
+  left: 50%;
+  transform: translateX(-50%); /* Centra el contenidor horitzontalment */
+  
   display: flex;
-  justify-content: space-between;
-  padding: 0 20px;
-  box-sizing: border-box;
+  flex-direction: column; /* Un sobre l'altre */
+  align-items: center;
+  gap: 12px; /* Espai vertical entre el 1r i 2n botó */
   z-index: 10;
+  
+  width: auto; /* S'adapta a l'amplada dels botons */
 }
 
 #btn-validar, #btn-tutorial {
