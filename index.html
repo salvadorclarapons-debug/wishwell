@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ritual Wishwell</title>
-   <link rel="stylesheet" href="https://wishwell-mu.vercel.app/style.css">
+    <!-- Recorda canviar a la teva URL de Vercel real -->
+    <link rel="stylesheet" href="https://wishwell-mu.vercel.app/style.css">
 </head>
 <body>
     <!-- Contenidor del Pou (el fons el posarem a Webflow) -->
     <div id="wishwell-container">
         
-        <!-- Textos inicials (inicialment amagats per CSS) -->
-        <h1 id="wishwell-title" class="ritual-text hidden">WISHWELL</h1>
-        <h2 id="think-title" class="ritual-text hidden">PENSA UN DESIG</h2>
+        <!-- Textos inicials (inicialment amagats per CSS, mides ajustades per CSS) -->
+        <h2 id="wishwell-title" class="hidden">WISHWELL</h2> <!-- AJUST 1: Ara és h2, petit -->
+        <h1 id="think-title" class="hidden">PENSA UN DESIG</h1> <!-- AJUST 2: Ara és h1, gran -->
         
         <!-- Línia de 15 segons -->
         <div id="barra-timer-container">
@@ -25,13 +26,24 @@
         <!-- La Moneda (inicialment amagada per CSS, recorda posar una URL real) -->
         <img id="moneda" class="ritual-element hidden" src="URL_DE_LA_TEVA_MONEDA.png" alt="Moneda">
 
-        <!-- Botons inferiors (inicialment amagats per CSS) -->
+        <!-- Botons inferiors (inicialment amagats per CSS, franja negra a sota fixed) -->
         <div id="payment-buttons" class="ritual-element hidden">
-            <button id="btn-validar">CRIPTOVALIDAR EL DESIG 0'50 USDC (WALLET TO WALLET)</button>
-            <button id="btn-tutorial">La primera vegada wallet to wallet? Clica...</button>
+            
+            <!-- AJUST 3: Botó de dues línies CRIPTOVALIDAR / WALLET TO WALLET -->
+            <button id="btn-validar">
+                <span class="main-text">CRIPTOVALIDAR EL DESIG 0'50 USDC</span>
+                <span class="small-text">WALLET TO WALLET</span>
+            </button>
+            
+            <!-- AJUST 4: Botó de dues línies Primera vegada / Fem-ho en 2 minuts -->
+            <button id="btn-tutorial">
+                <span class="main-text">Primera vegada wallet to wallet?</span>
+                <span class="small-text">Fem-ho en 2 minuts</span>
+            </button>
+            
         </div>
 
-        <!-- El Tutorial (inicialment amagat per CSS, recorda posar les teves 7 URLs reals) -->
+        <!-- El Tutorial modal (inicialment amagat per CSS) -->
         <div id="tutorial-container" class="ritual-element hidden">
             <div class="tutorial-content">
                 <button id="btn-close-tutorial">Tancar</button>
@@ -49,6 +61,7 @@
         <p id="final-message" class="ritual-text hidden">DESIG CRIPTOVALIDAT. MOLTA SORT</p>
     </div>
 
-   <script src="https://wishwell-mu.vercel.app/script.js"></script>
+    <!-- Recorda canviar a la teva URL de Vercel real -->
+    <script src="https://wishwell-mu.vercel.app/script.js"></script>
 </body>
 </html>
