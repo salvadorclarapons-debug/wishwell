@@ -60,19 +60,20 @@ body, html {
 
 /* Estils per a la línia de 15 segons, el botó refresh i la moneda */
 #barra-timer-container {
-    width: 80%;
-    height: 1px;
-    background-color: #333; /* Fons línia fosc */
-    margin: 20px 0;
+  width: 280px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 15px 0;
 }
 
 #barra-timer {
-    width: 0%; /* Buida inicialment */
-    height: 1px;
-    background-color: #ffd700; /* Progressió daurada */
-    transition: width 15s linear; /* Triga 15s */
+  height: 100%;
+  width: 0%;
+  background: #00ffcc; /* Color verd/cian brillant per a la càrrega */
+  transition: width 0.1s linear;
 }
-
 #btn-refresh {
     font-size: 14px;
     background: #f0f0f0;
