@@ -42,40 +42,39 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function completarTemps() {
-    // PAS 1: Surt el botó +15s immediatament
+    // 0s: Apareix el botó +15s immediatament en acabar el temps
     if (btnRefresh) {
       btnRefresh.innerHTML = `+ 15s ${refreshIconSVG}`;
       btnRefresh.classList.remove('hidden');
     }
 
-    // Fem visible el contenidor de botons
     if (paymentButtons) {
       paymentButtons.classList.remove('hidden');
     }
 
-    // PAS 2: Espera 1 segon -> Apareix el primer botó (CRIPTOVALIDAR)
+    // PAS 1: Espera 2s -> Apareix el primer botó (CRIPTOVALIDAR)
     setTimeout(() => {
       if (btnCriptovalidar) {
         btnCriptovalidar.classList.remove('hidden');
       }
 
-      // PAS 3: Espera 1 segon més (2s en total) -> Apareix el segon botó (Primera vegada)
+      // PAS 2: Espera 2s més -> Apareix el segon botó (Primera vegada)
       setTimeout(() => {
         if (btnPrimeraVegada) {
           btnPrimeraVegada.classList.remove('hidden');
         }
 
-        // PAS 4: Espera 0.5s més -> La moneda glissa des del lateral
+        // PAS 3: Espera 3s més -> La moneda glissa des del lateral
         setTimeout(() => {
           if (moneda) {
             moneda.classList.remove('coin-hidden');
             moneda.classList.add('coin-visible');
           }
-        }, 500);
+        }, 3000);
 
-      }, 1000);
+      }, 2000);
 
-    }, 1000);
+    }, 2000);
   }
 
   // Reinici amb el botó +15s
