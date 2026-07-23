@@ -7,34 +7,38 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Contenidor principal del Pou -->
     <div id="wishwell-container">
 
-        <!-- Textos inicials -->
-        <h2 id="wishwell-title" class="hidden">WISHWELL</h2>
-        <h1 id="think-title" class="hidden">PENSA UN DESIG</h1>
-
-        <!-- Línia de temps de 15 segons -->
-        <div id="barra-timer-container" class="hidden">
-            <div id="barra-timer" class="hidden"></div>
+        <!-- Capçalera més amunt -->
+        <div id="header-group">
+            <h2 id="wishwell-title" class="hidden">WISHWELL</h2>
+            <h1 id="think-title" class="hidden">PENSA UN DESIG</h1>
         </div>
 
-        <!-- Botó d'afegir 15s / Refresh -->
+        <!-- Text "15s" molt petit a sobre de la barra -->
+        <div id="timer-wrapper" class="hidden">
+            <div class="timer-label">15s</div>
+            <div id="barra-timer-container">
+                <div id="barra-timer"></div>
+            </div>
+        </div>
+
+        <!-- Botó +15s / Refresh -->
         <button id="btn-refresh" class="hidden"></button>
 
-        <!-- La Moneda (Surt un cop acaben els 15 segons) -->
-        <img id="moneda" class="hidden" src="usdc-trasparent.png" alt="0.50 USDC Coin">
+        <!-- Moneda preparada per entrar des del lateral -->
+        <img id="moneda" class="coin-hidden" src="usdc-trasparent.png" alt="0.50 USDC Coin">
 
-        <!-- Botons inferiors (Franja de validació i tutorial) -->
+        <!-- Botons de pagament -->
         <div id="payment-buttons" class="hidden">
 
-            <!-- Botó principal de pagament -->
+            <!-- Botó en 2 línies exactes -->
             <button id="btn-validar">
                 <span class="main-text">CRIPTOVALIDAR EL DESIG 0'50 USDC</span>
                 <span class="small-text">WALLET TO WALLET</span>
             </button>
 
-            <!-- Botó tutorial -->
+            <!-- Segon botó -->
             <button id="btn-tutorial">
                 <span class="main-text">Primera vegada wallet to wallet?</span>
                 <span class="small-text">Fem-ho en 2 minuts</span>
