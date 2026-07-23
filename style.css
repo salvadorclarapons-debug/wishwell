@@ -53,7 +53,7 @@ body, html {
     font-weight: 800; /* Molt negreta */
     margin-top: 5px;
     margin-bottom: 20px;
-    color: #ffd700; /* Daurat/groc, opcional per contrastar al fons */
+    color: #ffffff; /* blanc pur */
 }
 
 /* Estils per a la línia de 15 segons, el botó refresh i la moneda */
