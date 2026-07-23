@@ -1,12 +1,16 @@
-/* Estils bàsics (el fons del pou s'ha de posar a Webflow) */
+/* Estils globals per a tot el ritual */
 body, html {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
-    overflow: hidden; /* Evitar scroll si la imatge del pou és gran */
+    overflow: hidden; /* Evitar scroll */
+    background: transparent; /* Permet veure el fons de Webflow */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #1a1a1a; /* Color text base fosc, Webflow ho sobreescriurà si cal */
 }
 
+/* Contenidor que ocupa tota la pantalla i distribueix elements */
 #wishwell-container {
     display: flex;
     flex-direction: column;
@@ -15,49 +19,117 @@ body, html {
     height: 100vh;
     padding: 20px;
     box-sizing: border-box;
+    text-align: center; /* Centrar tot el text */
 }
 
-/* Franja negra a sota per als botons (opcional si es vol neta) */
-#payment-buttons {
-    margin-top: auto; /* Empènyer cap a sota */
-    background-color: black;
-    width: 100%;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Classes d'ocultació per a les interaccions */
+/* Classes d'ocultació per a les interaccions del ritual */
 .hidden {
     opacity: 0;
-    pointer-events: none; /* Evitar clics en elements amagats */
-    transition: opacity 0.5s ease; /* Transició suau d'aparició */
+    pointer-events: none; /* No clickable si està amagat */
+    transition: opacity 0.5s ease; /* Aparició suau */
 }
 
-/* Quan l'element és visible */
+/* Quan l'element és visible per JavaScript */
 .ritual-text.visible,
-.ritual-element.visible {
+.ritual-element.visible,
+#wishwell-title.visible,
+#think-title.visible {
     opacity: 1;
     pointer-events: auto;
 }
 
-/* Estils per a la línia de 15 segons */
+/* AJUST 1: WHISHWELL petit (com un encapçalament secundari) */
+#wishwell-title {
+    font-size: 16px; /* Mida petita i discreta */
+    font-weight: 600; /* Semi-negreta */
+    margin-top: 10px;
+    margin-bottom: 5px;
+    letter-spacing: 1px; /* Un poc espaiat */
+}
+
+/* AJUST 2: PENSA UN DESIG gran (com l'antic Wishwell) */
+#think-title {
+    font-size: 32px; /* Mida gran i principal */
+    font-weight: 800; /* Molt negreta */
+    margin-top: 5px;
+    margin-bottom: 20px;
+    color: #ffd700; /* Daurat/groc, opcional per contrastar al fons */
+}
+
+/* Estils per a la línia de 15 segons, el botó refresh i la moneda */
 #barra-timer-container {
     width: 80%;
     height: 1px;
-    background-color: #333; /* Color de fons de la línia fosc */
+    background-color: #333; /* Fons línia fosc */
     margin: 20px 0;
 }
 
 #barra-timer {
-    width: 0%; /* Al principi buida */
+    width: 0%; /* Buida inicialment */
     height: 1px;
-    background-color: #ffd700; /* Color de progressió daurat */
-    transition: width 15s linear; /* La progressió triga 15 segons */
+    background-color: #ffd700; /* Progressió daurada */
+    transition: width 15s linear; /* Triga 15s */
 }
 
-/* El Tutorial modal */
+#btn-refresh {
+    font-size: 14px;
+    background: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+#moneda {
+    width: 60px; /* Mida moneda */
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+/* Franja negra a sota per als botons de pagament */
+#payment-buttons {
+    margin-top: auto; /* Empènyer a sota de tot */
+    background-color: black;
+    width: 100vw;
+    padding: 10px 0; /* Padding vertical, horitzontal es buit per amplada total */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed; /* Fixat a sota */
+    bottom: 0;
+    left: 0;
+}
+
+/* ESTIL DELS BOTONS INFERIORS DE DUES LÍNIES */
+#payment-buttons button {
+    background-color: white; /* Botó blanc per contrastar amb la franja negra */
+    border: none;
+    padding: 8px 15px; /* Padding vertical i horitzontal */
+    margin: 5px 0; /* Espai vertical entre botons */
+    border-radius: 6px;
+    cursor: pointer;
+    text-align: center;
+    width: 90%; /* Ample gairebé total, centrat */
+    max-width: 400px; /* Ample màxim si és a PC */
+}
+
+/* AJUST 3 i 4: Text principal i petit dels botons */
+#payment-buttons .main-text {
+    font-size: 14px; /* Text principal */
+    font-weight: bold;
+    display: block; /* Ocupa tota la línia */
+    margin-bottom: 2px; /* Petit espai per a sota */
+}
+
+#payment-buttons .small-text {
+    font-size: 11px; /* Text petit i secundari */
+    font-weight: normal;
+    display: block;
+    color: #666; /* Color gris per diferenciar */
+}
+
+/* El Tutorial modal i el missatge final es queden igual */
 #tutorial-container {
     position: fixed;
     top: 0;
@@ -68,6 +140,7 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 10000; /* Per sobre de tot */
 }
 
 .tutorial-content {
@@ -76,4 +149,21 @@ body, html {
     border-radius: 10px;
     width: 80%;
     max-width: 600px;
+}
+
+#btn-close-tutorial {
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+#final-message {
+    font-size: 24px;
+    font-weight: bold;
+    color: white; /* Perquè es vegi si l'iframe té fons fosc, o fons de Webflow */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Lluïssor */
 }
