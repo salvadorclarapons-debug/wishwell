@@ -3,14 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wishwell</title><!DOCTYPE html>
-<html lang="ca">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wishwell</title>
   <style>
-    /* RESET I FONS */
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       background-color: #0b1120;
@@ -22,7 +16,6 @@
       align-items: center;
     }
 
-    /* CONTENIDOR PRINCIPAL */
     .app-container {
       width: 100%;
       max-width: 450px;
@@ -32,36 +25,35 @@
       align-items: center;
     }
 
-    /* CAPÇALERA / TEXTOS SUPERIORS */
-    .header-text {
-      text-align: center;
-      margin-bottom: 15px;
-    }
+    /* 1. TEXT SUPREM I TEMPS */
+    .header-text { text-align: center; margin-bottom: 15px; }
     .header-text h1 { font-size: 1.8rem; margin-bottom: 5px; }
     .header-text p { color: #cbd5e1; font-size: 1.1rem; }
-    .timer-badge { color: #38bdf8; font-weight: bold; margin-top: 5px; }
+    .timer-badge { color: #38bdf8; font-weight: bold; font-size: 1.2rem; margin-top: 5px; }
 
-    /* IMATGE DEL POU (S'adapta sense tallar l'aigua) */
+    /* 2. POU */
     .well-img {
       width: 100%;
       height: auto;
-      max-height: 400px;
+      max-height: 380px;
       object-fit: cover;
       border-radius: 16px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      display: block;
     }
 
-    /* IMATGE DE LA MONEDA (Mida humana i continguda) */
+    /* 3. MONEDA (Ajustada a sobre del pou) */
     .coin-img {
-      width: 140px !important;
-      height: 140px !important;
+      width: 130px;
+      height: auto;
       object-fit: contain;
-      margin: -30px auto 15px auto; /* Flota lleugerament sobre el pou */
+      margin: -35px auto 20px auto;
       position: relative;
       z-index: 2;
+      display: block;
     }
 
-    /* BOTONS PRINCIPALS */
+    /* 4. BOTONS D'ACCIÓ */
     .btn-main {
       width: 100%;
       background-color: #2563eb;
@@ -84,38 +76,22 @@
       border-radius: 8px;
       font-size: 0.9rem;
       cursor: pointer;
+      margin-bottom: 15px;
     }
 
-    /* BLOC DEL TUTORIAL / ONBOARDING */
+    /* 5. GUIA INTEGRA */
     .tutorial-box {
       background-color: #1e293b;
       border: 1px solid #334155;
       border-radius: 12px;
       padding: 20px;
-      margin-top: 15px;
       width: 100%;
-      position: relative;
-    }
-
-    .tutorial-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 15px;
-    }
-
-    .btn-close {
-      background: transparent;
-      border: none;
-      color: #94a3b8;
-      font-size: 1.2rem;
-      cursor: pointer;
-      padding: 4px 8px;
     }
 
     .step-block { margin-bottom: 15px; }
-    .step-block h3 { color: #ffffff; font-size: 1rem; margin-bottom: 4px; text-align: left; }
-    .step-block p { color: #94a3b8; font-size: 0.85rem; text-align: left; }
+    .step-block:last-child { margin-bottom: 0; }
+    .step-block h3 { color: #ffffff; font-size: 0.95rem; margin-bottom: 4px; }
+    .step-block p { color: #94a3b8; font-size: 0.85rem; }
     
     .step-btn {
       background-color: #2563eb;
@@ -135,7 +111,7 @@
 
   <div class="app-container">
     
-    <!-- 1. Títol i frase a dalt -->
+    <!-- 1. Títol i frase -->
     <div class="header-text">
       <h1>Wishwell</h1>
       <p>Pensa el teu desig profundament...</p>
@@ -145,187 +121,17 @@
     <!-- 2. Imatge del Pou -->
     <img src="Gemini%20POU.png" alt="Pou" class="well-img">
 
-    <!-- 3. Moneda USDC (Superposada a la boca del pou) -->
+    <!-- 3. Moneda USDC (Centrada sota el pou) -->
     <img src="USDC%20COIN.png" alt="Moneda USDC" class="coin-img">
 
-    <!-- 4. Botons d'Acció -->
+    <!-- 4. Primer botó (Criptovalidar) -->
     <button class="btn-main">CRIPTOVALIDAR EL DESIG 0'50 USDC WALLET TO WALLET</button>
+
+    <!-- 5. Segon botó (Opció de primera vegada) -->
     <button class="btn-subtle">Primera vegada wallet to wallet? Fem-ho en 2 minuts</button>
 
-    <!-- 5. Tutorial Desplegable (Ja maquetat en targeta) -->
+    <!-- 6. Guia ràpida fixa -->
     <div class="tutorial-box">
-      <div class="tutorial-header">
-        <span>Guia ràpida</span>
-        <button class="btn-close">✕</button>
-      </div>
-
-      <div class="step-block">
-        <h3>1. Descarrega el teu Moneder 🦊</h3>
-        <p>Per llançar la moneda necessites un moneder digital (MetaMask).</p>
-        <p><a href="#">Instal·lar Extensió</a> | <a href="#">App Mòbil</a></p>
-        <button class="step-btn">Ja el tinc instal·lat →</button>
-      </div>
-
-      <div class="step-block">
-        <h3>2. Guarda la teva Clau Secreta 🔒</h3>
-        <p>Apunta les 12 paraules secretes en un lloc segur.</p>
-      </div>
-    </div>
-
-  </div>
-
-</body>
-</html>
-  <style>
-    /* RESET I FONS */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background-color: #0b1120;
-      color: #ffffff;
-      font-family: system-ui, -apple-system, sans-serif;
-      padding: 20px 15px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    /* CONTENIDOR PRINCIPAL */
-    .app-container {
-      width: 100%;
-      max-width: 450px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    /* CAPÇALERA / TEXTOS SUPERIORS */
-    .header-text {
-      text-align: center;
-      margin-bottom: 15px;
-    }
-    .header-text h1 { font-size: 1.8rem; margin-bottom: 5px; }
-    .header-text p { color: #cbd5e1; font-size: 1.1rem; }
-    .timer-badge { color: #38bdf8; font-weight: bold; margin-top: 5px; }
-
-    /* IMATGE DEL POU (S'adapta sense tallar l'aigua) */
-    .well-img {
-      width: 100%;
-      height: auto;
-      max-height: 400px;
-      object-fit: cover;
-      border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-    }
-
-    /* IMATGE DE LA MONEDA (Mida humana i continguda) */
-    .coin-img {
-      width: 140px !important;
-      height: 140px !important;
-      object-fit: contain;
-      margin: -30px auto 15px auto; /* Flota lleugerament sobre el pou */
-      position: relative;
-      z-index: 2;
-    }
-
-    /* BOTONS PRINCIPALS */
-    .btn-main {
-      width: 100%;
-      background-color: #2563eb;
-      color: white;
-      border: none;
-      padding: 14px;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      font-weight: bold;
-      cursor: pointer;
-      margin-bottom: 10px;
-    }
-
-    .btn-subtle {
-      width: 100%;
-      background-color: #1e293b;
-      color: #38bdf8;
-      border: 1px solid #334155;
-      padding: 12px;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      cursor: pointer;
-    }
-
-    /* BLOC DEL TUTORIAL / ONBOARDING */
-    .tutorial-box {
-      background-color: #1e293b;
-      border: 1px solid #334155;
-      border-radius: 12px;
-      padding: 20px;
-      margin-top: 15px;
-      width: 100%;
-      position: relative;
-    }
-
-    .tutorial-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 15px;
-    }
-
-    .btn-close {
-      background: transparent;
-      border: none;
-      color: #94a3b8;
-      font-size: 1.2rem;
-      cursor: pointer;
-      padding: 4px 8px;
-    }
-
-    .step-block { margin-bottom: 15px; }
-    .step-block h3 { color: #ffffff; font-size: 1rem; margin-bottom: 4px; text-align: left; }
-    .step-block p { color: #94a3b8; font-size: 0.85rem; text-align: left; }
-    
-    .step-btn {
-      background-color: #2563eb;
-      color: white;
-      border: none;
-      padding: 8px 14px;
-      border-radius: 6px;
-      font-size: 0.85rem;
-      margin-top: 8px;
-      cursor: pointer;
-    }
-
-    a { color: #38bdf8; text-decoration: underline; }
-  </style>
-</head>
-<body>
-
-  <div class="app-container">
-    
-    <!-- 1. Títol i frase a dalt -->
-    <div class="header-text">
-      <h1>Wishwell</h1>
-      <p>Pensa el teu desig profundament...</p>
-      <div class="timer-badge">15s</div>
-    </div>
-
-    <!-- 2. Imatge del Pou -->
-    <img src="pou.jpg" alt="Pou" class="well-img">
-
-    <!-- 3. Moneda USDC (Superposada a la boca del pou) -->
-    <img src="usdc-coin.png" alt="Moneda USDC" class="coin-img">
-
-    <!-- 4. Botons d'Acció -->
-    <button class="btn-main">CRIPTOVALIDAR EL DESIG 0'50 USDC WALLET TO WALLET</button>
-    <button class="btn-subtle">Primera vegada wallet to wallet? Fem-ho en 2 minuts</button>
-
-    <!-- 5. Tutorial Desplegable (Ja maquetat en targeta) -->
-    <div class="tutorial-box">
-      <div class="tutorial-header">
-        <span>Guia ràpida</span>
-        <button class="btn-close">✕</button>
-      </div>
-
       <div class="step-block">
         <h3>1. Descarrega el teu Moneder 🦊</h3>
         <p>Per llançar la moneda necessites un moneder digital (MetaMask).</p>
