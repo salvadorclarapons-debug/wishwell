@@ -1,5 +1,5 @@
 /* =========================================================
-   1. ESTILS GENERALS I CONTENIDOR PRINCIPAL
+   1. ESTILS GENERALS I FONS AMB LA IMATGE DEL POU
    ========================================================= */
 * {
     box-sizing: border-box;
@@ -9,7 +9,12 @@
 }
 
 body {
-    background-color: #0d1117;
+    /* El pou com a fons complet d'escriptori / mòbil */
+    background-image: linear-gradient(rgba(13, 17, 23, 0.75), rgba(13, 17, 23, 0.85)), url("Gemini POU.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     color: #ffffff;
     display: flex;
     justify-content: center;
@@ -22,7 +27,7 @@ body {
     text-align: center;
     width: 100%;
     max-width: 480px;
-    padding: 20px;
+    padding: 30px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -33,45 +38,37 @@ body {
     display: none !important;
 }
 
-/* =========================================================
-   2. IMATGE DEL POU (Apareix a dalt de tot)
-   ========================================================= */
+/* Amaguem la etiqueta d'imatge solta ja que ara és el fons */
 #pou-imatge {
-    width: 180px;
-    height: auto;
-    margin: 0 auto 20px auto;
-    display: block;
-    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.25));
-    transition: transform 0.3s ease;
-}
-
-#pou-imatge:hover {
-    transform: scale(1.03);
+    display: none !important;
 }
 
 /* =========================================================
-   3. TITOLS I CAPÇALERA
+   2. TITOLS I CAPÇALERA
    ========================================================= */
 #header-group {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 #wishwell-title {
     color: #e3b341;
-    font-size: 1rem;
-    letter-spacing: 3px;
-    margin-bottom: 5px;
+    font-size: 1.1rem;
+    letter-spacing: 4px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
 }
 
 #think-title {
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 700;
     color: #ffffff;
     margin-bottom: 15px;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.9);
 }
 
 /* =========================================================
-   4. TEMPORITZADOR (BARRA DE 15s)
+   3. TEMPORITZADOR (BARRA DE 15s)
    ========================================================= */
 #timer-wrapper {
     width: 100%;
@@ -80,18 +77,20 @@ body {
 }
 
 .timer-label {
-    font-size: 0.75rem;
-    color: #8b949e;
+    font-size: 0.8rem;
+    color: #c9d1d9;
     text-align: right;
-    margin-bottom: 4px;
+    margin-bottom: 5px;
+    text-shadow: 0 1px 5px rgba(0,0,0,0.8);
 }
 
 #barra-timer-container {
     width: 100%;
     height: 6px;
-    background-color: #21262d;
+    background-color: rgba(255, 255, 255, 0.15);
     border-radius: 3px;
     overflow: hidden;
+    backdrop-filter: blur(2px);
 }
 
 #barra-timer {
@@ -104,29 +103,30 @@ body {
 
 /* Botó Refresh / +15s */
 #btn-refresh {
-    background: transparent;
-    border: 1px solid #30363d;
+    background: rgba(22, 27, 34, 0.6);
+    border: 1px solid rgba(227, 179, 65, 0.5);
     color: #e3b341;
-    padding: 6px 16px;
+    padding: 8px 18px;
     border-radius: 20px;
     cursor: pointer;
     font-size: 0.85rem;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    backdrop-filter: blur(5px);
     transition: all 0.2s ease;
 }
 
 #btn-refresh:hover {
-    background-color: #21262d;
+    background-color: rgba(227, 179, 65, 0.2);
     border-color: #e3b341;
 }
 
 /* =========================================================
-   5. MONEDA (Entrada des del lateral)
+   4. MONEDA (Entrada des del lateral)
    ========================================================= */
 #moneda {
-    width: 140px;
+    width: 130px;
     height: auto;
-    margin: 15px auto;
+    margin: 10px auto 25px auto;
     transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -138,24 +138,24 @@ body {
 .coin-visible {
     opacity: 1;
     transform: translateX(0) rotate(0deg);
-    filter: drop-shadow(0 0 20px rgba(227, 179, 65, 0.4));
+    filter: drop-shadow(0 0 25px rgba(227, 179, 65, 0.6));
 }
 
 /* =========================================================
-   6. BOTONS DE PAGAMENT I ACCIÓ
+   5. BOTONS DE PAGAMENT I ACCIÓ
    ========================================================= */
 #payment-buttons {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    margin-top: 15px;
+    gap: 14px;
+    margin-top: 10px;
 }
 
 #btn-validar, #btn-tutorial {
     width: 100%;
-    padding: 14px 20px;
-    border-radius: 12px;
+    padding: 16px 20px;
+    border-radius: 14px;
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -164,28 +164,29 @@ body {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Botó Principal (Groc/Daurat) */
+/* Botó Principal (Daurat amb fons opac per destacar del fons) */
 #btn-validar {
-    background: linear-gradient(135deg, #f3c623, #e3b341);
+    background: linear-gradient(135deg, #e3b341, #d49b28);
     border: none;
     color: #0d1117;
-    box-shadow: 0 4px 15px rgba(227, 179, 65, 0.3);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
 #btn-validar:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(227, 179, 65, 0.5);
+    box-shadow: 0 8px 25px rgba(227, 179, 65, 0.4);
 }
 
-/* Botó Segon (Tutorial) */
+/* Botó Segon (Tutorial translúcid) */
 #btn-tutorial {
-    background: #161b22;
-    border: 1px solid #30363d;
+    background: rgba(22, 27, 34, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     color: #f0f6fc;
+    backdrop-filter: blur(8px);
 }
 
 #btn-tutorial:hover {
-    background: #21262d;
+    background: rgba(33, 38, 45, 0.9);
     border-color: #8b949e;
     transform: translateY(-2px);
 }
@@ -198,13 +199,13 @@ body {
 
 .small-text {
     font-size: 0.72rem;
-    opacity: 0.8;
+    opacity: 0.85;
     margin-top: 3px;
     text-transform: uppercase;
 }
 
 /* =========================================================
-   7. MODAL TUTORIAL METAMASK (VENTANA FLOTANT)
+   6. MODAL TUTORIAL METAMASK
    ========================================================= */
 .modal-overlay {
     position: fixed;
@@ -212,8 +213,8 @@ body {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(13, 17, 23, 0.85);
-    backdrop-filter: blur(5px);
+    background-color: rgba(13, 17, 23, 0.88);
+    backdrop-filter: blur(8px);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -228,7 +229,7 @@ body {
     width: 90%;
     max-width: 420px;
     position: relative;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
 }
 
 .close-btn {
@@ -246,7 +247,6 @@ body {
     color: #ffffff;
 }
 
-/* Indicador de Passos (Dots) */
 .steps-bar {
     display: flex;
     align-items: center;
@@ -279,7 +279,6 @@ body {
     margin: 0 5px;
 }
 
-/* Contingut dels Passos */
 .tutorial-step h3 {
     color: #f0f6fc;
     font-size: 1.2rem;
@@ -293,7 +292,6 @@ body {
     margin-bottom: 20px;
 }
 
-/* Botons de Pas */
 .btn-group-vertical {
     display: flex;
     flex-direction: column;
@@ -331,7 +329,6 @@ body {
     cursor: pointer;
     background-color: #e3b341;
     color: #0d1117;
-    transition: opacity 0.2s ease;
 }
 
 .next-step-btn.disabled {
@@ -339,7 +336,6 @@ body {
     cursor: not-allowed;
 }
 
-/* Checkbox Pas 2 */
 .checkbox-container {
     display: flex;
     align-items: center;
