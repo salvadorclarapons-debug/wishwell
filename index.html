@@ -6,144 +6,173 @@
   <title>Wishwell</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* FONS DE PANTALLA COMPLETA AMB LA IMATGE DEL POU */
     body {
-      background-color: #0b1120;
+      background: #0b1120 url('Gemini%20POU.png') center center / cover no-repeat fixed;
+      min-height: 100vh;
       color: #ffffff;
       font-family: system-ui, -apple-system, sans-serif;
-      padding: 20px 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    /* CONTENIDOR AMB AMPLADA FIXXADA I CENTRAT */
+    .hero-container {
+      width: 100%;
+      max-width: 360px;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    .app-container {
-      width: 100%;
-      max-width: 450px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    /* TÍTOL I TEXT SUPERIOR SUPERPOSATS */
+    .subtitle {
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #e2e8f0;
+      margin-bottom: 5px;
+      opacity: 0.9;
     }
 
-    /* 1. TEXT SUPREM I TEMPS */
-    .header-text { text-align: center; margin-bottom: 15px; }
-    .header-text h1 { font-size: 1.8rem; margin-bottom: 5px; }
-    .header-text p { color: #cbd5e1; font-size: 1.1rem; }
-    .timer-badge { color: #38bdf8; font-weight: bold; font-size: 1.2rem; margin-top: 5px; }
-
-    /* 2. POU */
-    .well-img {
-      width: 100%;
-      height: auto;
-      max-height: 380px;
-      object-fit: cover;
-      border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-      display: block;
+    .title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.8);
     }
 
-    /* 3. MONEDA (Ajustada a sobre del pou) */
-    .coin-img {
-      width: 130px;
-      height: auto;
-      object-fit: contain;
-      margin: -35px auto 20px auto;
-      position: relative;
-      z-index: 2;
-      display: block;
-    }
-
-    /* 4. BOTONS D'ACCIÓ */
-    .btn-main {
-      width: 100%;
-      background-color: #2563eb;
-      color: white;
-      border: none;
-      padding: 14px;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      font-weight: bold;
-      cursor: pointer;
-      margin-bottom: 10px;
-    }
-
-    .btn-subtle {
-      width: 100%;
-      background-color: #1e293b;
-      color: #38bdf8;
-      border: 1px solid #334155;
-      padding: 12px;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      cursor: pointer;
-      margin-bottom: 15px;
-    }
-
-    /* 5. GUIA INTEGRA */
-    .tutorial-box {
-      background-color: #1e293b;
-      border: 1px solid #334155;
-      border-radius: 12px;
-      padding: 20px;
-      width: 100%;
-    }
-
-    .step-block { margin-bottom: 15px; }
-    .step-block:last-child { margin-bottom: 0; }
-    .step-block h3 { color: #ffffff; font-size: 0.95rem; margin-bottom: 4px; }
-    .step-block p { color: #94a3b8; font-size: 0.85rem; }
-    
-    .step-btn {
-      background-color: #2563eb;
-      color: white;
-      border: none;
-      padding: 8px 14px;
-      border-radius: 6px;
+    .timer-text {
       font-size: 0.85rem;
-      margin-top: 8px;
-      cursor: pointer;
+      color: #cbd5e1;
+      margin-bottom: 6px;
     }
 
-    a { color: #38bdf8; text-decoration: underline; }
+    /* BARRA DE PROGRÉS VERDA */
+    .progress-bar-bg {
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 2px;
+      margin-bottom: 15px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      width: 100%;
+      height: 100%;
+      background-color: #10b981; /* Verd Neó */
+      border-radius: 2px;
+    }
+
+    /* BOTÓ AMB L'ICONO DE REINICIAR */
+    .btn-reset {
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      color: #ffffff;
+      padding: 5px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+      margin-bottom: 25px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* MONEDA DAURADA CENTRADA DINTRE DEL POU */
+    .coin-img {
+      width: 110px;
+      height: auto;
+      margin-bottom: 25px;
+      filter: drop-shadow(0 8px 16px rgba(0,0,0,0.6));
+    }
+
+    /* BOTÓ BLANC DESTACAT */
+    .btn-primary {
+      width: 100%;
+      background-color: #ffffff;
+      color: #0f172a;
+      border: none;
+      padding: 12px 15px;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: 0.85rem;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      line-height: 1.3;
+    }
+
+    .btn-primary span {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #475569;
+    }
+
+    /* BOTÓ TRANSLÚCID / FOSC PER AL TUTORIAL */
+    .btn-secondary {
+      width: 100%;
+      background: rgba(30, 41, 59, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      padding: 12px 15px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      line-height: 1.3;
+    }
+
+    .btn-secondary span {
+      display: block;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #cbd5e1;
+      text-transform: uppercase;
+    }
   </style>
 </head>
 <body>
 
-  <div class="app-container">
+  <div class="hero-container">
     
-    <!-- 1. Títol i frase -->
-    <div class="header-text">
-      <h1>Wishwell</h1>
-      <p>Pensa el teu desig profundament...</p>
-      <div class="timer-badge">15s</div>
+    <!-- HEADER -->
+    <div class="subtitle">WISHWELL</div>
+    <h1 class="title">PENSA UN DESIG</h1>
+    
+    <!-- TEMPORITZADOR I BARRA VERDA -->
+    <div class="timer-text">15s</div>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill"></div>
     </div>
 
-    <!-- 2. Imatge del Pou -->
-    <img src="Gemini%20POU.png" alt="Pou" class="well-img">
+    <!-- BOTÓ REINICIAR -->
+    <button class="btn-reset">+ 15s ↺</button>
 
-    <!-- 3. Moneda USDC (Centrada sota el pou) -->
+    <!-- MONEDA DINTRE DEL POU -->
     <img src="USDC%20COIN.png" alt="Moneda USDC" class="coin-img">
 
-    <!-- 4. Primer botó (Criptovalidar) -->
-    <button class="btn-main">CRIPTOVALIDAR EL DESIG 0'50 USDC WALLET TO WALLET</button>
+    <!-- BOTONS DE COMPRA DINTRE DEL POU -->
+    <button class="btn-primary">
+      CRIPTOVALIDAR EL DESIG 0'50 USDC
+      <span>WALLET TO WALLET</span>
+    </button>
 
-    <!-- 5. Segon botó (Opció de primera vegada) -->
-    <button class="btn-subtle">Primera vegada wallet to wallet? Fem-ho en 2 minuts</button>
-
-    <!-- 6. Guia ràpida fixa -->
-    <div class="tutorial-box">
-      <div class="step-block">
-        <h3>1. Descarrega el teu Moneder 🦊</h3>
-        <p>Per llançar la moneda necessites un moneder digital (MetaMask).</p>
-        <p><a href="#">Instal·lar Extensió</a> | <a href="#">App Mòbil</a></p>
-        <button class="step-btn">Ja el tinc instal·lat →</button>
-      </div>
-
-      <div class="step-block">
-        <h3>2. Guarda la teva Clau Secreta 🔒</h3>
-        <p>Apunta les 12 paraules secretes en un lloc segur.</p>
-      </div>
-    </div>
+    <button class="btn-secondary">
+      Primera vegada wallet to wallet?
+      <span>FEM-HO EN 2 MINUTS</span>
+    </button>
 
   </div>
 
