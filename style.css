@@ -8,7 +8,102 @@ html, body {
   margin: 0 !important;
   padding: 20px 10px !important;
   display: flex !important;
-  flex-direction: column !important;
+  flex-direction: column !important;/* 1. ESTRUCTURA GLOBAL I FONS */
+body {
+  background-color: #0b1120;
+  color: #ffffff;
+  font-family: system-ui, -apple-system, sans-serif;
+  margin: 0;
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Contenidor central per no desbordar */
+main, .container {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 2. POU I MONEDA (MIDES DE CENTRAT) */
+.well-image, img[src*="pou"] {
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  border-radius: 16px;
+  display: block;
+  margin: 0 auto 15px auto;
+}
+
+.coin-image, img[src*="USDC"], img[src*="coin"] {
+  width: 160px !important;  /* Mida normal per a la moneda */
+  height: auto !important;
+  display: block;
+  margin: 15px auto;
+}
+
+/* 3. BOTONS PRINCIPALS (SOTA LA MONEDA) */
+.btn-primary, button.main-btn {
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  padding: 14px 20px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  max-width: 450px;
+  margin-bottom: 10px;
+}
+
+.btn-secondary {
+  background-color: #1e293b;
+  color: #38bdf8;
+  border: 1px solid #334155;
+  padding: 12px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 450px;
+  cursor: pointer;
+}
+
+/* 4. ARREGLO EXCLUSIU PER AL TUTORIAL/DESPLEGABLE */
+/* Botó de tancar (×) petit i discret */
+button.close-btn, button:contains("×") {
+  background: transparent !important;
+  border: none !important;
+  color: #94a3b8 !important;
+  width: auto !important;
+  padding: 4px 8px !important;
+  font-size: 1.2rem !important;
+  display: inline-block !important;
+  margin: 0 0 10px auto !important;
+}
+
+/* Botons de pas de dins del tutorial ("Ja el tinc instal·lat", etc.) */
+.step-btn, .tutorial-container button {
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  width: auto; /* Evita que ocupin el 100% si no fa falta */
+  display: inline-block;
+  margin-top: 8px;
+}
+
+/* Enllaços d'extensió / App */
+a {
+  color: #38bdf8;
+  text-decoration: underline;
+}
   align-items: center !important;
 }
 
