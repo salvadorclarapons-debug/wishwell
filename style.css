@@ -1,348 +1,44 @@
-/* =========================================================
-   1. ESTILS GENERALS I FONS AMB LA IMATGE DEL POU
-   ========================================================= */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
 body {
-    /* El pou com a fons complet d'escriptori / mòbil */
-    background-image: linear-gradient(rgba(13, 17, 23, 0.75), rgba(13, 17, 23, 0.85)), url("Gemini POU.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    overflow-x: hidden;
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
 
-#wishwell-container {
-    text-align: center;
-    width: 100%;
-    max-width: 480px;
-    padding: 30px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+header {
+  text-align: center;
+  padding: 20px;
 }
 
-/* Utilitat per amagar elements */
-.hidden {
-    display: none !important;
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 100px); /* Adjust based on header/footer height */
 }
 
-/* Amaguem la etiqueta d'imatge solta ja que ara és el fons */
-#pou-imatge {
-    display: none !important;
+.well {
+  width: 100%;
+  max-width: 600px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  padding: 20px;
 }
 
-/* =========================================================
-   2. TITOLS I CAPÇALERA
-   ========================================================= */
-#header-group {
-    margin-bottom: 25px;
+.well img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
 }
 
-#wishwell-title {
-    color: #e3b341;
-    font-size: 1.1rem;
-    letter-spacing: 4px;
-    margin-bottom: 8px;
-    text-transform: uppercase;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+.well h1 {
+  font-size: 24px;
+  margin-top: 10px;
 }
 
-#think-title {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #ffffff;
-    margin-bottom: 15px;
-    text-shadow: 0 2px 12px rgba(0,0,0,0.9);
+.well p {
+  font-size: 16px;
 }
 
-/* =========================================================
-   3. TEMPORITZADOR (BARRA DE 15s)
-   ========================================================= */
-#timer-wrapper {
-    width: 100%;
-    max-width: 320px;
-    margin-bottom: 15px;
-}
-
-.timer-label {
-    font-size: 0.8rem;
-    color: #c9d1d9;
-    text-align: right;
-    margin-bottom: 5px;
-    text-shadow: 0 1px 5px rgba(0,0,0,0.8);
-}
-
-#barra-timer-container {
-    width: 100%;
-    height: 6px;
-    background-color: rgba(255, 255, 255, 0.15);
-    border-radius: 3px;
-    overflow: hidden;
-    backdrop-filter: blur(2px);
-}
-
-#barra-timer {
-    height: 100%;
-    width: 100%;
-    background: linear-gradient(90deg, #f1e05a, #e3b341);
-    border-radius: 3px;
-    transition: width 0.1s linear;
-}
-
-/* Botó Refresh / +15s */
-#btn-refresh {
-    background: rgba(22, 27, 34, 0.6);
-    border: 1px solid rgba(227, 179, 65, 0.5);
-    color: #e3b341;
-    padding: 8px 18px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 0.85rem;
-    margin-bottom: 25px;
-    backdrop-filter: blur(5px);
-    transition: all 0.2s ease;
-}
-
-#btn-refresh:hover {
-    background-color: rgba(227, 179, 65, 0.2);
-    border-color: #e3b341;
-}
-
-/* =========================================================
-   4. MONEDA (Entrada des del lateral)
-   ========================================================= */
-#moneda {
-    width: 130px;
-    height: auto;
-    margin: 10px auto 25px auto;
-    transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.coin-hidden {
-    opacity: 0;
-    transform: translateX(-150px) rotate(-180deg);
-}
-
-.coin-visible {
-    opacity: 1;
-    transform: translateX(0) rotate(0deg);
-    filter: drop-shadow(0 0 25px rgba(227, 179, 65, 0.6));
-}
-
-/* =========================================================
-   5. BOTONS DE PAGAMENT I ACCIÓ
-   ========================================================= */
-#payment-buttons {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    margin-top: 10px;
-}
-
-#btn-validar, #btn-tutorial {
-    width: 100%;
-    padding: 16px 20px;
-    border-radius: 14px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-/* Botó Principal (Daurat amb fons opac per destacar del fons) */
-#btn-validar {
-    background: linear-gradient(135deg, #e3b341, #d49b28);
-    border: none;
-    color: #0d1117;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-}
-
-#btn-validar:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(227, 179, 65, 0.4);
-}
-
-/* Botó Segon (Tutorial translúcid) */
-#btn-tutorial {
-    background: rgba(22, 27, 34, 0.75);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #f0f6fc;
-    backdrop-filter: blur(8px);
-}
-
-#btn-tutorial:hover {
-    background: rgba(33, 38, 45, 0.9);
-    border-color: #8b949e;
-    transform: translateY(-2px);
-}
-
-.main-text {
-    font-weight: 700;
-    font-size: 0.95rem;
-    letter-spacing: 0.5px;
-}
-
-.small-text {
-    font-size: 0.72rem;
-    opacity: 0.85;
-    margin-top: 3px;
-    text-transform: uppercase;
-}
-
-/* =========================================================
-   6. MODAL TUTORIAL METAMASK
-   ========================================================= */
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(13, 17, 23, 0.88);
-    backdrop-filter: blur(8px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.modal-card {
-    background-color: #161b22;
-    border: 1px solid #30363d;
-    border-radius: 16px;
-    padding: 30px 25px;
-    width: 90%;
-    max-width: 420px;
-    position: relative;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-}
-
-.close-btn {
-    position: absolute;
-    top: 15px;
-    right: 18px;
-    background: none;
-    border: none;
-    color: #8b949e;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-.close-btn:hover {
-    color: #ffffff;
-}
-
-.steps-bar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 25px;
-}
-
-.step-dot {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    background-color: #21262d;
-    color: #8b949e;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.85rem;
-    font-weight: bold;
-}
-
-.step-dot.active {
-    background-color: #e3b341;
-    color: #0d1117;
-}
-
-.step-line {
-    width: 25px;
-    height: 2px;
-    background-color: #21262d;
-    margin: 0 5px;
-}
-
-.tutorial-step h3 {
-    color: #f0f6fc;
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-}
-
-.tutorial-step p {
-    color: #8b949e;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    margin-bottom: 20px;
-}
-
-.btn-group-vertical {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.guide-btn {
-    display: block;
-    padding: 12px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-align: center;
-}
-
-.guide-btn.primary {
-    background-color: #238636;
-    color: #ffffff;
-}
-
-.guide-btn.secondary {
-    background-color: #21262d;
-    color: #c9d1d9;
-    border: 1px solid #30363d;
-}
-
-.next-step-btn, .action-pay-btn {
-    width: 100%;
-    padding: 12px;
-    border-radius: 8px;
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
-    background-color: #e3b341;
-    color: #0d1117;
-}
-
-.next-step-btn.disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
-}
-
-.checkbox-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: #c9d1d9;
-    font-size: 0.85rem;
-    margin-bottom: 20px;
-    cursor: pointer;
-    text-align: left;
+footer {
+  text-align: center;
+  padding: 20px;
 }
