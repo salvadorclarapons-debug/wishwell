@@ -153,3 +153,96 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+// =========================================================
+// LÒGICA DEL TUTORIAL I PAGAMENT METAMASK (A PARTIR DE LA LÍNIA 156)
+// =========================================================
+
+// 1. Canviar de pas al tutorial
+window.canviarPas = function(numPas) {
+  document.querySelectorAll('.tutorial-step').forEach(el => el.classList.add('hidden'));
+  document.querySelectorAll('.step-dot').forEach(el => el.classList.remove('active'));
+
+  const pasActual = document.getElementById(`step-${numPas}`);
+  if (pasActual) pasActual.classList.remove('hidden');
+
+  for (let i = 1; i <= numPas; i++) {
+    const dot = document.getElementById(`dot-${i}`);
+    if (dot) dot.classList.add('active');
+  }
+};
+
+// 2. Esdeveniments dels botons
+const tutorialModal = document.getElementById('tutorial-modal');
+const closeTutorial = document.getElementById('close-tutorial');
+const checkSeed = document.getElementById('check-seed');
+const btnToStep3 = document.getElementById('btn-to-step3');
+const btnGoto2 = document.getElementById('btn-goto-2');
+const btnGoto4 = document.getElementById('btn-goto-4');
+const btnConnectPay = document.getElementById('btn-connect-pay');
+
+// Obrir tutorial amb el teu botó
+if (btnPrimeraVegada) {
+  btnPrimeraVegada.addEventListener('click', () => {
+    if (tutorialModal) tutorialModal.classList.remove('hidden');
+    canviarPas(1);
+  });
+}
+
+if (closeTutorial) {
+  closeTutorial.addEventListener('click', () => {
+    if (tutorialModal) tutorialModal.classList.add('hidden');
+  });
+}
+
+if (btnGoto2) btnGoto2.addEventListener('click', () => canviarPas(2));
+if (btnGoto4) btnGoto4.addEventListener('click', () => canviarPas(4));
+
+if (checkSeed && btnToStep3) {
+  checkSeed.addEventListener('change', (e) => {
+    if (e.target.checked) {
+      btnToStep3.disabled = false;
+      btnToStep3.classList.remove('disabled');
+    } else {
+      btnToStep3.disabled = true;
+      btnToStep3.classList.add('disabled');
+    }
+  });
+
+  btnToStep3.addEventListener('click', () => canviarPas(3));
+}
+
+// 3. Connexió i enviament de transacció a la teva wallet
+if (btnConnectPay) {
+  btnConnectPay.addEventListener('click', async () => {
+    
+    // ⬇️ POSA AQUÍ LA TEVA ADREÇA SENCERA DE METAMASK (0x2A2Da...)
+    const WALLET_DESTINATARI = "0x2A2Da22d9e5f7C6E0E58B455A96bd228e7188ad2"; 
+
+    if (typeof window.ethereum !== 'undefined') {
+      try {
+        const comptes = await window.ethereum.request({ method: 'eth_requestAccounts' });
+        const compteUsuari = comptes[0];
+
+        const parametresTransaccio = {
+          from: compteUsuari,
+          to: WALLET_DESTINATARI,
+          value: '0x38D7EA4C68000',
+        };
+
+        const txHash = await window.ethereum.request({
+          method: 'eth_sendTransaction',
+          params: [parametresTransaccio],
+        });
+
+        alert("✨ Desig enviat i registrat a la blockchain! Hash: " + txHash);
+        if (tutorialModal) tutorialModal.classList.add('hidden');
+
+      } catch (error) {
+        console.error("Error durant la transacció:", error);
+        alert("S'ha cancel·lat o ha fallat la connexió.");
+      }
+    } else {
+      alert("No s'ha detectat l'extensió de MetaMask al navegador.");
+    }
+  });
+}
