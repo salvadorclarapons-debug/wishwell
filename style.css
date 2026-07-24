@@ -1,50 +1,85 @@
 /* ==========================================
-   ARREGLO EXCLUSIU PER AL TUTORIAL (PRIMERA VEGADA)
+   ESTILS GENERALS I FONS FOSC
    ========================================== */
-
-/* Contenidor del tutorial */
-.tutorial-container, 
-div:has(> .step-1), 
-div:contains("1. Descarrega") {
-  background-color: #1e293b !important;
-  border: 1px solid #334155 !important;
-  border-radius: 12px !important;
-  padding: 20px !important;
-  margin: 15px auto !important;
-  max-width: 500px !important;
+html, body {
+  background-color: #0b1120 !important;
   color: #ffffff !important;
+  font-family: system-ui, -apple-system, sans-serif !important;
+  margin: 0 !important;
+  padding: 20px 10px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
 }
 
-/* Fix per als enllaços d'instal·lació (que es vegin clars) */
-.tutorial-container a, 
-a[href*="metamask"] {
-  color: #38bdf8 !important; /* Blau cel visible */
-  text-decoration: underline !important;
-  font-weight: 500 !important;
+/* ==========================================
+   CONTROL DE MIDA D'IMATGES (POU I MONEDA)
+   ========================================== */
+img {
+  display: block !important;
+  margin: 0 auto !important;
+  max-width: 450px !important; /* Limita l'amplada de les imatges */
+  width: 100% !important;
+  height: auto !important;
+  border-radius: 12px !important;
 }
 
-/* Fix per als botons petits de dins del tutorial */
-.tutorial-container button {
-  width: auto !important; /* Que NO ocupin el 100% d'ample si són de pas */
-  display: inline-block !important;
-  padding: 8px 16px !important;
-  margin-top: 10px !important;
+/* Reducció específica per a la moneda */
+img[src*="coin"], img[src*="USDC"], img[src*="moneda"] {
+  max-width: 160px !important; /* Mida adequada per a la moneda */
+  margin: 15px auto !important;
+}
+
+/* ==========================================
+   TITOLS I TEXTOS
+   ========================================== */
+h1, h2, h3, p {
+  text-align: center !important;
+  color: #ffffff !important;
+  margin-bottom: 8px !important;
+}
+
+p {
+  color: #cbd5e1 !important;
+}
+
+/* ==========================================
+   BOTONS I ENLLAÇOS
+   ========================================== */
+button, input[type="button"], .button {
   background-color: #2563eb !important;
   color: #ffffff !important;
-  border-radius: 6px !important;
   border: none !important;
-  font-size: 0.85rem !important;
+  padding: 12px 20px !important;
+  border-radius: 8px !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  margin: 8px auto !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 450px !important;
 }
 
-/* Botó de tancar "x" del tutorial */
-.tutorial-container .close-btn,
-button:contains("×") {
-  float: right !important;
-  background: transparent !important;
-  border: none !important;
-  color: #94a3b8 !important;
-  font-size: 1.2rem !important;
-  width: auto !important;
-  padding: 0 !important;
-  cursor: pointer !important;
+button:hover {
+  background-color: #1d4ed8 !important;
+}
+
+a {
+  color: #38bdf8 !important; /* Blau cel ben visible */
+  text-decoration: underline !important;
+}
+
+/* ==========================================
+   CONTENIDOR DELS PASSOS / TUTORIAL
+   ========================================== */
+div {
+  box-sizing: border-border-box;
+}
+
+/* Enquadrat general per al text de sota */
+body > div, section {
+  max-width: 450px !important;
+  width: 100% !important;
+  margin: 0 auto !important;
 }
