@@ -1,170 +1,374 @@
-/* Estils globals per a tot el ritual */
-body, html {
+/* =========================================================
+   1. RESET I ESTILS GENERALS (WISHWELL)
+   ========================================================= */
+* {
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background-image: url('Gemini POU.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  color: #ffffff;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Contenidor principal organitzat de dalt a baix */
+body {
+  background-color: #0b0f19;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
 #wishwell-container {
+  width: 100%;
+  max-width: 480px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* Mantenim tot amunt */
-  width: 100vw;
-  height: 100vh;
-  padding-top: 40px; /* Distància superior per al títol de capçalera */
-  box-sizing: border-box;
   text-align: center;
+  position: relative;
 }
 
-/* Capçalera: WISHWELL + PENSA UN DESIG */
-#header-group {
-  margin-bottom: 15px;
+/* Utilitat per amagar elements */
+.hidden {
+  display: none !important;
 }
 
-#wishwell-title {
-  color: rgba(255, 255, 255, 0.65) !important;
-  font-size: 13px;
+/* =========================================================
+   2. CAPÇALERA I TÍTOLS
+   ========================================================= */
+#header-group h2 {
+  font-size: 14px;
   letter-spacing: 3px;
+  color: #ffd700;
   text-transform: uppercase;
-  margin: 0 0 2px 0;
-  font-weight: 500;
-  text-shadow: 0px 1px 4px rgba(0, 0, 0, 0.8);
+  margin-bottom: 5px;
+  opacity: 0.8;
 }
 
-#think-title {
-  color: #ffffff !important;
+#header-group h1 {
   font-size: 26px;
   font-weight: 700;
   letter-spacing: 1px;
-  margin: 0;
-  text-shadow: 0px 2px 10px rgba(0, 0, 0, 0.9);
+  margin-bottom: 15px;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
 }
 
-/* Indicador de 15s molt petit sobre la barra */
+/* =========================================================
+   3. BARRA DE TEMPS I REFRESH
+   ========================================================= */
+#timer-wrapper {
+  width: 100%;
+  max-width: 320px;
+  margin-bottom: 15px;
+}
+
 .timer-label {
-  font-size: 10px;
-  color: rgba(255, 255, 255, 0.7);
-  letter-spacing: 1px;
-  margin-bottom: 3px;
-  text-transform: uppercase;
+  font-size: 11px;
+  color: #888;
+  margin-bottom: 4px;
+  text-align: right;
 }
 
-/* Contenidor de la barra del timer */
 #barra-timer-container {
-  width: 220px;
-  height: 5px;
-  background: rgba(255, 255, 255, 0.2);
+  width: 100%;
+  height: 6px;
+  background-color: #1a2234;
   border-radius: 3px;
   overflow: hidden;
-  margin-bottom: 10px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.5);
 }
 
 #barra-timer {
   height: 100%;
   width: 0%;
-  background: #00ffcc;
+  background: linear-gradient(90deg, #ffd700, #ffa500);
   transition: width 0.1s linear;
+  border-radius: 3px;
 }
 
-/* Botó de refresc +15s */
 #btn-refresh {
-  background: rgba(0, 0, 0, 0.5);
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 5px 12px;
-  border-radius: 16px;
+  background: transparent;
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  color: #ffd700;
+  padding: 6px 14px;
+  border-radius: 15px;
   font-size: 12px;
   cursor: pointer;
   margin-bottom: 15px;
-  backdrop-filter: blur(4px);
   transition: all 0.2s ease;
 }
 
-/* Moneda i la seva animació des del lateral */
+#btn-refresh:hover {
+  background: rgba(255, 215, 0, 0.1);
+  border-color: #ffd700;
+}
+
+/* =========================================================
+   4. MONEDA I ANIMACIONS
+   ========================================================= */
 #moneda {
-  max-width: 120px;
+  width: 140px;
   height: auto;
-  margin: 10px auto;
-  display: block;
-  filter: drop-shadow(0px 8px 16px rgba(0,0,0,0.8));
-  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.27), opacity 0.5s ease;
+  margin: 20px 0;
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.5s ease;
 }
 
-/* Quan està amagada, surt de la pantalla per la dreta */
-#moneda.coin-hidden {
+.coin-hidden {
   opacity: 0;
-  transform: translateX(200px) rotate(45deg);
-  pointer-events: none;
+  transform: translateX(-150px) rotate(-180deg);
 }
 
-/* Quan apareix, se situa exactament al centre */
-#moneda.coin-visible {
+.coin-visible {
   opacity: 1;
   transform: translateX(0) rotate(0deg);
 }
 
-/* Botons de pagament en 2 línies netes */
+/* =========================================================
+   5. BOTONS DE PAGAMENT PRINCIPALS
+   ========================================================= */
 #payment-buttons {
-  position: absolute;
-  /* Augmentem la distància des de baix per pujar-los a mitja pedra */
-  bottom: 80px; /* Si abans tenies 20px o 30px, puja a 70px - 90px segons l'alçada de la imatge */
-  left: 50%;
-  transform: translateX(-50%); /* Centra el contenidor horitzontalment */
-  
+  width: 100%;
+  max-width: 340px;
   display: flex;
-  flex-direction: column; /* Un sobre l'altre */
-  align-items: center;
-  gap: 12px; /* Espai vertical entre el 1r i 2n botó */
-  z-index: 10;
-  
-  width: auto; /* S'adapta a l'amplada dels botons */
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
 }
 
 #btn-validar, #btn-tutorial {
-  background: #ffffff;
-  color: #111111;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 8px;
-  font-weight: 600;
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 12px;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
-  width: 280px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#btn-validar {
+  background: linear-gradient(135deg, #ffd700, #e6a100);
+  border: none;
+  color: #000;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.25);
+}
+
+#btn-validar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
 }
 
 #btn-tutorial {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(5px);
+}
+
+#btn-tutorial:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 215, 0, 0.5);
 }
 
 .main-text {
+  font-weight: 700;
   font-size: 13px;
-  display: block;
-  line-height: 1.2;
+  letter-spacing: 0.5px;
 }
 
 .small-text {
   font-size: 10px;
-  opacity: 0.8;
-  display: block;
-  margin-top: 3px;
+  opacity: 0.75;
+  margin-top: 2px;
   text-transform: uppercase;
 }
 
-.hidden {
-  display: none !important;
+/* =========================================================
+   6. MODAL TUTORIAL "PRIMERA VEGADA" (METAMASK)
+   ========================================================= */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+}
+
+.modal-card {
+  background: #121824;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 20px;
+  padding: 30px 25px;
+  width: 90%;
+  max-width: 400px;
+  color: #ffffff;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.7), 0 0 25px rgba(255, 215, 0, 0.12);
+  position: relative;
+  text-align: center;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 18px;
+  background: none;
+  border: none;
+  color: #777;
+  font-size: 24px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.close-btn:hover {
+  color: #fff;
+}
+
+/* Indicador de Passos (Punts superiors) */
+.steps-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+}
+
+.step-dot {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #1f293d;
+  color: #777;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.step-dot.active {
+  background: #ffd700;
+  color: #000;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.step-line {
+  width: 24px;
+  height: 2px;
+  background: #1f293d;
+}
+
+/* Contingut dels Passos */
+.tutorial-step h3 {
+  font-size: 18px;
+  color: #ffd700;
+  margin-bottom: 12px;
+}
+
+.tutorial-step p {
+  font-size: 13px;
+  color: #cccccc;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+/* Botons interns del Tutorial */
+.btn-group-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.guide-btn {
+  display: block;
+  padding: 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 13px;
+  transition: background 0.2s;
+}
+
+.guide-btn.primary {
+  background: #f6851b;
+  color: #ffffff;
+}
+
+.guide-btn.primary:hover {
+  background: #e2761B;
+}
+
+.guide-btn.secondary {
+  background: #1f293d;
+  color: #dddddd;
+}
+
+.guide-btn.secondary:hover {
+  background: #2a3752;
+}
+
+.next-step-btn {
+  background: transparent;
+  border: 1px solid #ffd700;
+  color: #ffd700;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.next-step-btn:hover:not(.disabled) {
+  background: rgba(255, 215, 0, 0.15);
+}
+
+.next-step-btn.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  border-color: #555;
+  color: #555;
+}
+
+.action-pay-btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #ffd700, #ffa500);
+  border: none;
+  border-radius: 12px;
+  color: #000;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+  transition: transform 0.2s ease;
+}
+
+.action-pay-btn:hover {
+  transform: scale(1.02);
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 20px 0;
+  font-size: 12px;
+  color: #bbb;
+  cursor: pointer;
+}
+
+.checkbox-container input {
+  cursor: pointer;
+  accent-color: #ffd700;
+  width: 16px;
+  height: 16px;
 }
