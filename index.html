@@ -45,9 +45,78 @@
             </button>
 
         </div>
+</div> <!-- Tancament de payment-buttons -->
+
+  </div> <!-- Tancament de wishwell-container (Línia 49) -->
+
+  <!-- ========================================================= -->
+  <!-- MODAL TUTORIAL METAMASK (PRIMERA VEGADA)                  -->
+  <!-- ========================================================= -->
+  <div id="tutorial-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <button id="close-tutorial" class="close-btn">&times;</button>
+      
+      <!-- Indicador de passos -->
+      <div class="steps-bar">
+        <span class="step-dot active" id="dot-1">1</span>
+        <span class="step-line"></span>
+        <span class="step-dot" id="dot-2">2</span>
+        <span class="step-line"></span>
+        <span class="step-dot" id="dot-3">3</span>
+        <span class="step-line"></span>
+        <span class="step-dot" id="dot-4">4</span>
+      </div>
+
+      <!-- PAS 1: DESCARREGAR -->
+      <div id="step-1" class="tutorial-step">
+        <h3>1. Descarrega el teu Moneder 🦊</h3>
+        <p>Per llançar la moneda al pou necessites un moneder digital (MetaMask). És la teva bústia personal Web3.</p>
+        
+        <div class="btn-group-vertical">
+          <a href="https://metamask.io/download/" target="_blank" class="guide-btn primary">
+            💻 Instal·lar Extensió (Navegador)
+          </a>
+          <a href="https://metamask.io/download/" target="_blank" class="guide-btn secondary">
+            📱 Baixar App Mòbil (iOS / Android)
+          </a>
+        </div>
+        
+        <button class="next-step-btn" id="btn-goto-2">Ja el tinc instal·lat ➔</button>
+      </div>
+
+      <!-- PAS 2: CLAU SECRETA -->
+      <div id="step-2" class="tutorial-step hidden">
+        <h3>2. Guarda la teva Clau Secreta 🔐</h3>
+        <p>MetaMask et mostrarà <strong>12 paraules secretes</strong>. Apunta-les en un paper i no les comparteixis MAI amb ningú.</p>
+        
+        <label class="checkbox-container">
+          <input type="checkbox" id="check-seed">
+          <span class="checkmark"></span>
+          He guardat les 12 paraules en un lloc segur.
+        </label>
+        
+        <button id="btn-to-step3" class="next-step-btn disabled" disabled>Següent pas ➔</button>
+      </div>
+
+      <!-- PAS 3: CARREGAR SALDO -->
+      <div id="step-3" class="tutorial-step hidden">
+        <h3>3. Carrega la teva Moneda 🪙</h3>
+        <p>Necessites un xic de saldo per poder tirar la moneda. Pots comprar-ne directament amb targeta des de MetaMask o rebre una transferència.</p>
+        
+        <button class="next-step-btn" id="btn-goto-4">Ja tinc saldo a punt! ➔</button>
+      </div>
+
+      <!-- PAS 4: PAGAMENT WALLET TO WALLET -->
+      <div id="step-4" class="tutorial-step hidden">
+        <h3>4. El Ritual del Desig ✨</h3>
+        <p>Tot a punt! Prem el botó per connectar el teu MetaMask i validar la llançada de la moneda al pou.</p>
+        
+        <button id="btn-connect-pay" class="action-pay-btn">
+          🔗 Connectar Wallet i Llançar Moneda
+        </button>
+      </div>
 
     </div>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
